@@ -238,7 +238,7 @@ module Apartment
         if Apartment.with_multi_server_setup
           # neutral connection is necessary whenever you need to create/remove a database from a server.
           # example: when you use postgresql, you need to connect to the default postgresql database before you create your own.
-          SeparateDbConnectionHandler.establish_connection(multi_tenantify(tenant, false))
+          SeparateDbConnectionHandler.establish_connection(multi_tenantify(tenant, true))
           yield(SeparateDbConnectionHandler.connection)
           SeparateDbConnectionHandler.connection.close
         else
